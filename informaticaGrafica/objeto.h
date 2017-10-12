@@ -22,8 +22,9 @@
 #include <GL/gl.h>
 #endif
 
-typedef enum {VERTICES, ARISTAS, SOLID, CHESS, P_A} rendering_mode;
-typedef enum {CUBE, PYRAMID} object_type;
+typedef enum {VERTICES, ARISTAS, SOLID, CHESS, P_A, REVOLUTION} rendering_mode;
+typedef enum {CUBE, PYRAMID, OBJECT_PLY, OBJECT_REV} object_type;
+typedef enum {TUBE, CYLINDER, GLASS, GLASS_I, CONE} object_ply;
 
 class Objeto {
 	

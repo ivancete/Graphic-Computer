@@ -16,6 +16,7 @@
 #include "triangulos.h"
 #include "cubo.h"
 #include "piramide.h"
+#include "figura_ply.h"
 
 #if defined(__APPLE__)
 #include <GLUT/glut.h>
@@ -28,9 +29,23 @@
 
 rendering_mode mode = VERTICES;
 object_type obj = CUBE;
+object_ply obj_ply = TUBE;
+
+vector<_vertex3f> tubo ={{5,-5,0},{5,5,0}};
+vector<_vertex3f> cono ={{5,-5,0},{0,-5,0},{0,5,0}};
+vector<_vertex3f> vaso ={{2.5,-5,0},{5,5,0},{0,-5,0}};
+vector<_vertex3f> vasoI ={{5,-5,0},{2.5,5,0},{0,5,0}};
+vector<_vertex3f> cilindro ={{5,-5,0},{5,5,0},{0,-5,0},{0,5,0}};
 
 Cubo cubo(4);
 Piramide piramide(10, 10);
+FiguraPly objeto_ply ("/Users/Ivanovic/Documents/Graphic-Computer/informaticaGrafica/beethoven.ply");
+
+FiguraPly tuboRevolucion(tubo);
+FiguraPly coneRevolucion(cono);
+FiguraPly vasoRevolucion(vaso);
+FiguraPly vasoRevolucionI(vasoI);
+FiguraPly cilindroRevolucion(cilindro);
 
 // tamaño de los ejes
 const int AXIS_SIZE=5000;
@@ -161,6 +176,158 @@ void draw_objects()
 					break;
 			}
 			break;
+            
+        case OBJECT_PLY:
+            switch (mode) {
+                case VERTICES:
+                    objeto_ply.draw_points();
+                    break;
+                case ARISTAS:
+                    objeto_ply.draw_edges();
+                    break;
+                    
+                case SOLID:
+                    objeto_ply.draw_solid();
+                    break;
+                    
+                case CHESS:
+                    objeto_ply.draw_chess();
+                    break;
+            }
+            break;
+            
+        case OBJECT_REV:
+            
+            switch (obj_ply) {
+                    
+                case CYLINDER:
+                    
+                    switch (mode) {
+                            
+                        case VERTICES:
+                            cilindroRevolucion.draw_points();
+                            break;
+                        case ARISTAS:
+                            cilindroRevolucion.draw_edges();
+                            break;
+                            
+                        case SOLID:
+                            cilindroRevolucion.draw_solid();
+                            break;
+                            
+                        case CHESS:
+                            cilindroRevolucion.draw_chess();
+                            break;
+                            
+                        case REVOLUTION:
+                            cilindroRevolucion.revolution(20);
+                            break;
+                    }
+                    break;
+                    
+                case TUBE:
+                    
+                    switch (mode) {
+                            
+                        case VERTICES:
+                            tuboRevolucion.draw_points();
+                            break;
+                        case ARISTAS:
+                            tuboRevolucion.draw_edges();
+                            break;
+                            
+                        case SOLID:
+                            tuboRevolucion.draw_solid();
+                            break;
+                            
+                        case CHESS:
+                            tuboRevolucion.draw_chess();
+                            break;
+                            
+                        case REVOLUTION:
+                            tuboRevolucion.revolution(20);
+                            break;
+                    }
+                    break;
+                    
+                case CONE:
+                    
+                    switch (mode) {
+                            
+                        case VERTICES:
+                            coneRevolucion.draw_points();
+                            break;
+                        case ARISTAS:
+                            coneRevolucion.draw_edges();
+                            break;
+                            
+                        case SOLID:
+                            coneRevolucion.draw_solid();
+                            break;
+                            
+                        case CHESS:
+                            coneRevolucion.draw_chess();
+                            break;
+                            
+                        case REVOLUTION:
+                            coneRevolucion.revolution(20);
+                            break;
+                    }
+                    break;
+                    
+                case GLASS:
+                    
+                    switch (mode) {
+                            
+                        case VERTICES:
+                            vasoRevolucion.draw_points();
+                            break;
+                            
+                        case ARISTAS:
+                            vasoRevolucion.draw_edges();
+                            break;
+                            
+                        case SOLID:
+                            vasoRevolucion.draw_solid();
+                            break;
+                            
+                        case CHESS:
+                            vasoRevolucion.draw_chess();
+                            break;
+                            
+                        case REVOLUTION:
+                            vasoRevolucion.revolution(20);
+                            break;
+                    }
+                    break;
+                    
+                case GLASS_I:
+                    
+                    switch (mode) {
+                            
+                        case VERTICES:
+                            vasoRevolucionI.draw_points();
+                            break;
+                        case ARISTAS:
+                            vasoRevolucionI.draw_edges();
+                            break;
+                            
+                        case SOLID:
+                            vasoRevolucionI.draw_solid();
+                            break;
+                            
+                        case CHESS:
+                            vasoRevolucionI.draw_chess();
+                            break;
+                            
+                        case REVOLUTION:
+                            vasoRevolucionI.revolution(20);
+                            break;
+                    }
+                    break;
+                    
+            }
+            break;
 	}
 }
 
@@ -232,6 +399,30 @@ void normal_keys(unsigned char Tecla1,int x,int y)
 		case 'N':
 			mode = P_A;
 			break;
+            
+        case 'R':
+            mode = REVOLUTION;
+            break;
+            
+        case '1':
+            obj_ply = TUBE;
+            break;
+            
+        case '2':
+            obj_ply = CYLINDER;
+            break;
+            
+        case '3':
+            obj_ply = CONE;
+            break;
+            
+        case '4':
+            obj_ply = GLASS;
+            break;
+            
+        case '5':
+            obj_ply = GLASS_I;
+            break;
 	}
 	
 	glutPostRedisplay();
@@ -257,9 +448,20 @@ void special_keys(int Tecla1,int x,int y)
 		case GLUT_KEY_DOWN:Observer_angle_x++;break;
 		case GLUT_KEY_PAGE_UP:Observer_distance*=1.2;break;
 		case GLUT_KEY_PAGE_DOWN:Observer_distance/=1.2;break;
-			
-		case GLUT_KEY_F1:obj = CUBE;break;
-		case GLUT_KEY_F2:obj = PYRAMID;break;
+            
+        case GLUT_KEY_F1:
+            obj = PYRAMID;
+            break;
+        case GLUT_KEY_F2:
+            obj = CUBE;
+            break;
+        case GLUT_KEY_F3:
+            obj = OBJECT_PLY;
+            break;
+            
+        case GLUT_KEY_F4:
+            obj = OBJECT_REV;
+            break;
 	}
 	
 	glutPostRedisplay();
