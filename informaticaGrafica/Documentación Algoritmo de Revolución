@@ -1,0 +1,46 @@
+Este documento describe el proceso que lleva a cabo el algoritmo de revolución perteneciente a la práctica 2, para crear figuras 3D a partir de perfiles 2D.
+
+En primero lugar debemos reseñar que los perfiles deben estar construidos con los vértices desde abajo hacia arriba, indicando en caso de que tenga tapas (Por ejemplo un CILINDRO) también desde abajo hacia arriba los puntos centrales a las tapas.
+
+Un ejemplo vale más que mil palabras:
+
+·Si queremos construir una figura por ejemplo un TUBO en donde no haya tapas, esto es en donde los extremos de la figura por arriba y por abajo estén abiertos, únicamente debemos poner los vertices del perfil pertenecientes al cuerpo, y por lo tanto si lo miramos desde una perspectiva lateral estos vértices deben ir despegados del eje Y:
+
+    -Ejemplo de perfil -----------> Punto 1 = (5,-5,0).
+                                    Punto 2 = (5,5,0).
+Deben de ir por este orden guardados en la estructura de datos pertinente.
+
+·Si por el contrario queremos una figura con tapas, por ejemplo un Cilindro:
+
+    -Ejemplo de perfil -----------> Punto 1 = (5,-5,0).
+                                    Punto 2 = (5,5,0).
+                                    Punto 3 = (5,0,0). //Punto de la tapa de abajo.
+                                    Punto 4 = (5,0,0). //Punto de la tapa de arriba.
+
+Deben de ir por este orden guardados en la estructura de datos pertinente.
+
+Una vez tenemos el perfil, llamamos a la función revolución, a la que le pasamos el número de segmentos en el que queremos que nos divida el espacio 360º. Si queremos que se vea una buena simulación de la figura, mínimo pasarle 20 segmentos.
+
+Una vez dentro, el método observa si la figura tiene tapas o no, ya que para recrear las caras es vital en el último proceso.
+
+Después de este paso vital para la composición de las tapas, pasamos a componer el cuerpo del objeto.
+Para esto hacemos uso de las siguientes dos fórmulas:
+
+        (·) x = vertices[j].x * cos((i*2*M_PI)/n).
+        (·) z = vertices[j].x * sin((i*2*M_PI)/n).
+
+Así recreamos los nuevos vértices de la figura. Como podemos ver la coordenada Y no la calculamos y esto es por que no hace falta, ya que como lo que queremos hacer es revolucionar por el eje Y, solo tenemos que coger la altura de un punto de lo llamaremos referencia, esto no es más que coger el punto anterior al que estamos creando, de tal forma que cuando estemos creando el primero, cogemos como referencia el punto del perfil.
+
+Justo tras crear los nuevos vértices, pasamos a crear las caras, en donde vamos cogiendo los vértices, por ejemplo:
+    Cara 1 = (1,0,vértice de la parte de arriba de la figura que esté encima de estos vértices)
+
+Esto formaría lo siguiente:
+
+                        . P2
+                       / \
+                      /   \
+                     /     \
+                 P1 ._______. P0
+
+Por último se realiza un proceso parecido con las tapas.
+
