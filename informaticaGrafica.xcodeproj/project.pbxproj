@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F45A188E1F894BAA00AFE784 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45A188D1F894BAA00AFE784 /* OpenGL.framework */; };
+		F45A18901F894BAF00AFE784 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45A188F1F894BAF00AFE784 /* GLUT.framework */; };
+		F45A189A1F894C0100AFE784 /* objeto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45A18921F894C0000AFE784 /* objeto.cpp */; };
+		F45A189B1F894C0100AFE784 /* cubo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45A18951F894C0100AFE784 /* cubo.cpp */; };
+		F45A189C1F894C0100AFE784 /* triangulos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45A18961F894C0100AFE784 /* triangulos.cpp */; };
+		F45A189D1F894C0100AFE784 /* piramide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45A18981F894C0100AFE784 /* piramide.cpp */; };
+		F493C5D91F8B8EC400BD093D /* file_ply_stl.cc in Sources */ = {isa = PBXBuildFile; fileRef = F493C5D71F8B8EC400BD093D /* file_ply_stl.cc */; };
+		F493C5DC1F8B8FBF00BD093D /* figura_ply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F493C5DA1F8B8FBF00BD093D /* figura_ply.cpp */; };
 		F4A3CC021F7D27E4008FB41D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A3CC011F7D27E4008FB41D /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +31,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F45A188D1F894BAA00AFE784 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		F45A188F1F894BAF00AFE784 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		F45A18911F894C0000AFE784 /* vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vertex.h; sourceTree = "<group>"; };
+		F45A18921F894C0000AFE784 /* objeto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = objeto.cpp; sourceTree = "<group>"; };
+		F45A18931F894C0000AFE784 /* objeto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objeto.h; sourceTree = "<group>"; };
+		F45A18941F894C0000AFE784 /* piramide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = piramide.h; sourceTree = "<group>"; };
+		F45A18951F894C0100AFE784 /* cubo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubo.cpp; sourceTree = "<group>"; };
+		F45A18961F894C0100AFE784 /* triangulos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = triangulos.cpp; sourceTree = "<group>"; };
+		F45A18971F894C0100AFE784 /* triangulos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangulos.h; sourceTree = "<group>"; };
+		F45A18981F894C0100AFE784 /* piramide.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = piramide.cpp; sourceTree = "<group>"; };
+		F45A18991F894C0100AFE784 /* cubo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubo.h; sourceTree = "<group>"; };
+		F47E5C661F8FC2BE0014AC5F /* Documentación Algoritmo de Revolución */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Documentación Algoritmo de Revolución"; sourceTree = "<group>"; };
+		F493C5D71F8B8EC400BD093D /* file_ply_stl.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_ply_stl.cc; sourceTree = "<group>"; };
+		F493C5D81F8B8EC400BD093D /* file_ply_stl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_ply_stl.h; sourceTree = "<group>"; };
+		F493C5DA1F8B8FBF00BD093D /* figura_ply.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = figura_ply.cpp; sourceTree = "<group>"; };
+		F493C5DB1F8B8FBF00BD093D /* figura_ply.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = figura_ply.h; sourceTree = "<group>"; };
 		F4A3CBFE1F7D27E4008FB41D /* informaticaGrafica */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = informaticaGrafica; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A3CC011F7D27E4008FB41D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,17 +56,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45A18901F894BAF00AFE784 /* GLUT.framework in Frameworks */,
+				F45A188E1F894BAA00AFE784 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F45A188C1F894BAA00AFE784 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F45A188F1F894BAF00AFE784 /* GLUT.framework */,
+				F45A188D1F894BAA00AFE784 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F4A3CBF51F7D27E4008FB41D = {
 			isa = PBXGroup;
 			children = (
 				F4A3CC001F7D27E4008FB41D /* informaticaGrafica */,
 				F4A3CBFF1F7D27E4008FB41D /* Products */,
+				F45A188C1F894BAA00AFE784 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,7 +93,21 @@
 		F4A3CC001F7D27E4008FB41D /* informaticaGrafica */ = {
 			isa = PBXGroup;
 			children = (
+				F493C5D71F8B8EC400BD093D /* file_ply_stl.cc */,
+				F493C5D81F8B8EC400BD093D /* file_ply_stl.h */,
+				F45A18951F894C0100AFE784 /* cubo.cpp */,
+				F45A18991F894C0100AFE784 /* cubo.h */,
+				F45A18921F894C0000AFE784 /* objeto.cpp */,
+				F45A18931F894C0000AFE784 /* objeto.h */,
+				F45A18981F894C0100AFE784 /* piramide.cpp */,
+				F45A18941F894C0000AFE784 /* piramide.h */,
+				F45A18961F894C0100AFE784 /* triangulos.cpp */,
+				F45A18971F894C0100AFE784 /* triangulos.h */,
+				F45A18911F894C0000AFE784 /* vertex.h */,
 				F4A3CC011F7D27E4008FB41D /* main.cpp */,
+				F493C5DA1F8B8FBF00BD093D /* figura_ply.cpp */,
+				F493C5DB1F8B8FBF00BD093D /* figura_ply.h */,
+				F47E5C661F8FC2BE0014AC5F /* Documentación Algoritmo de Revolución */,
 			);
 			path = informaticaGrafica;
 			sourceTree = "<group>";
@@ -119,7 +169,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45A189A1F894C0100AFE784 /* objeto.cpp in Sources */,
+				F45A189D1F894C0100AFE784 /* piramide.cpp in Sources */,
 				F4A3CC021F7D27E4008FB41D /* main.cpp in Sources */,
+				F493C5D91F8B8EC400BD093D /* file_ply_stl.cc in Sources */,
+				F45A189B1F894C0100AFE784 /* cubo.cpp in Sources */,
+				F493C5DC1F8B8FBF00BD093D /* figura_ply.cpp in Sources */,
+				F45A189C1F894C0100AFE784 /* triangulos.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -241,6 +298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

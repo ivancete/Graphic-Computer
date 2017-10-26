@@ -36,6 +36,7 @@ public:
     FiguraPly();
     FiguraPly(string ubicacion);
     FiguraPly(vector<_vertex3f> v);
+    void parcialRevolution(int n);
     void revolution(int n);
 };
 

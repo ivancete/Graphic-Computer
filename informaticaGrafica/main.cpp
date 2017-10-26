@@ -36,6 +36,7 @@ vector<_vertex3f> cono ={{5,-5,0},{0,-5,0},{0,5,0}};
 vector<_vertex3f> vaso ={{2.5,-5,0},{5,5,0},{0,-5,0}};
 vector<_vertex3f> vasoI ={{5,-5,0},{2.5,5,0},{0,5,0}};
 vector<_vertex3f> cilindro ={{5,-5,0},{5,5,0},{0,-5,0},{0,5,0}};
+vector<_vertex3f> peonza ={{5,-5,0},{2.5,-2.5,0},{2,0,0},{2.5,2.5,0},{5,5,0}};
 
 Cubo cubo(4);
 Piramide piramide(10, 10);
@@ -46,6 +47,7 @@ FiguraPly coneRevolucion(cono);
 FiguraPly vasoRevolucion(vaso);
 FiguraPly vasoRevolucionI(vasoI);
 FiguraPly cilindroRevolucion(cilindro);
+FiguraPly peonzaRevolucion(peonza);
 
 // tamaño de los ejes
 const int AXIS_SIZE=5000;
@@ -59,7 +61,7 @@ GLfloat Observer_angle_y;
 GLfloat Window_width,Window_height,Front_plane,Back_plane;
 
 // variables que determninan la posicion y tamaño de la ventana X
-int UI_window_pos_x=50,UI_window_pos_y=50,UI_window_width=500,UI_window_height=500;
+int UI_window_pos_x=50,UI_window_pos_y=50,UI_window_width=1000,UI_window_height=1000;
 
 //**************************************************************************
 //
@@ -296,7 +298,7 @@ void draw_objects()
                             break;
                             
                         case REVOLUTION:
-                            vasoRevolucion.revolution(20);
+                            vasoRevolucion.revolution(70);
                             break;
                     }
                     break;
@@ -322,6 +324,35 @@ void draw_objects()
                             
                         case REVOLUTION:
                             vasoRevolucionI.revolution(20);
+                            break;
+                    }
+                    break;
+                    
+                case PEONZA:
+                    
+                    switch (mode) {
+                            
+                        case VERTICES:
+                            peonzaRevolucion.draw_points();
+                            break;
+                        case ARISTAS:
+                            peonzaRevolucion.draw_edges();
+                            break;
+                            
+                        case SOLID:
+                            peonzaRevolucion.draw_solid();
+                            break;
+                            
+                        case CHESS:
+                            peonzaRevolucion.draw_chess();
+                            break;
+                            
+                        case REVOLUTION:
+                            peonzaRevolucion.revolution(20);
+                            break;
+                            
+                        case REVOLUTION_PARCIAL:
+                            peonzaRevolucion.parcialRevolution(20);
                             break;
                     }
                     break;
@@ -404,6 +435,10 @@ void normal_keys(unsigned char Tecla1,int x,int y)
             mode = REVOLUTION;
             break;
             
+        case 'T':
+            mode = REVOLUTION_PARCIAL;
+            break;
+            
         case '1':
             obj_ply = TUBE;
             break;
@@ -422,6 +457,10 @@ void normal_keys(unsigned char Tecla1,int x,int y)
             
         case '5':
             obj_ply = GLASS_I;
+            break;
+            
+        case '6':
+            obj_ply = PEONZA;
             break;
 	}
 	
@@ -531,7 +570,7 @@ int main(int argc, char **argv)
 	
 	// llamada para crear la ventana, indicando el titulo (no se visualiza hasta que se llama
 	// al bucle de eventos)
-	glutCreateWindow("Práctica 1");
+	glutCreateWindow("GRAPHIC-COMPUTER");
 	
 	// asignación de la funcion llamada "dibujar" al evento de dibujo
 	glutDisplayFunc(draw_scene);
@@ -548,20 +587,6 @@ int main(int argc, char **argv)
 	// inicio del bucle de eventos
 	glutMainLoop();
 	return 0;
-}
-
-
-
-void Circle (GLfloat radio, GLfloat cx, GLfloat cy,  GLfloat cz, GLint n, GLenum modo)
-{
-	int i;
-	if (modo==GL_LINE) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	else if (modo==GL_FILL) glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	else glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-	glBegin( GL_POLYGON );
-	for (i=0;i<n;i++)
-		glVertex3f( cx+radio*cos(2.0*M_PI*i/n), cy+radio*sin(2.0*M_PI*i/n),cz);
-	glEnd();
 }
 
 
