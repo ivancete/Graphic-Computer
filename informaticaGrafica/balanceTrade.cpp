@@ -13,41 +13,45 @@ BalanceTrade::BalanceTrade(){
     bs = BaseStickMJ::BaseStickMJ();
 }
 
-void BalanceTrade::drawPointsBT(){
+void BalanceTrade::drawPointsBT(float angle1, float angle2, float translation){
     
     glPushMatrix();
-    glTranslatef(0, 20.8, 0);
-    bh.drawPointsBH(0, 0);
+    glTranslatef(0, translation, 0);
+    glRotatef(angle1, 0, 1, 0);
+    bh.drawPointsBH(angle1, angle2);
     glPopMatrix();
     
     bs.drawPointsBS();
 }
 
-void BalanceTrade::drawEdgeBT(){
+void BalanceTrade::drawEdgeBT(float angle1, float angle2, float translation){
     
     glPushMatrix();
-    glTranslatef(0, 20.8, 0);
-    bh.drawEdgeBH(0, 0);
+    glTranslatef(0, translation, 0);
+    glRotatef(angle1, 0, 1, 0);
+    bh.drawEdgeBH(angle1, angle2);
     glPopMatrix();
     
     bs.drawEdgeBS();
 }
 
-void BalanceTrade::drawSolidBT(){
+void BalanceTrade::drawSolidBT(float angle1, float angle2, float translation){
     
     glPushMatrix();
-    glTranslatef(0, 20.8, 0);
-    bh.drawSolidBH(0, 0);
+    glTranslatef(0, translation, 0);
+    glRotatef(angle1, 0, 1, 0);
+    bh.drawSolidBH(angle1, angle2);
     glPopMatrix();
     
     bs.drawSolidBS();
 }
 
-void BalanceTrade::drawChessBT(){
+void BalanceTrade::drawChessBT(float angle1, float angle2, float translation){
     
     glPushMatrix();
-    glTranslatef(0, 20.8, 0);
-    bh.drawChessBH(0, 0);
+    glTranslatef(0, translation, 0);
+    glRotatef(angle1, 0, 1, 0);
+    bh.drawChessBH(angle1, angle2);
     glPopMatrix();
     
     bs.drawChessBS();

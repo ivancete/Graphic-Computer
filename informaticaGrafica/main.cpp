@@ -45,6 +45,11 @@ vector<_vertex3f> vasoI ={{5,-5,0},{2.5,5,0},{0,5,0}};
 vector<_vertex3f> cilindro ={{5,-5,0},{5,5,0},{0,-5,0},{0,5,0}};
 vector<_vertex3f> peonza ={{5,-5,0},{2.5,-2.5,0},{2,0,0},{2.5,2.5,0},{5,5,0}};
 
+float translacion_y = 20.8;
+float angle1 = 0;
+float angle2 = 0;
+bool bajar = true;
+
 Cubo cubo(4);
 Piramide piramide(10, 10);
 FiguraPly objeto_ply ("/Users/Ivanovic/Documents/Graphic-Computer/informaticaGrafica/beethoven.ply");
@@ -80,6 +85,25 @@ int UI_window_pos_x=50,UI_window_pos_y=50,UI_window_width=1000,UI_window_height=
 
 void animation(){
     
+    if (bajar) {
+        angle1 += 1;
+        angle2 += 1;
+        translacion_y-=0.01;
+    }
+    else if(!bajar){
+        angle1 += 1;
+        angle2 += 1;
+        translacion_y+=0.01;
+    }
+    
+    if (translacion_y >= 20.8) {
+        bajar = true;
+    }
+    
+    if (translacion_y <= 14.8)
+        bajar = false;
+    
+    glutPostRedisplay();
 }
 
 //**************************************************************************
@@ -239,18 +263,18 @@ void draw_objects()
         case BALANCETRADE:
             switch (mode) {
                 case VERTICES:
-                    balancetrademj.drawPointsBT();
+                    balancetrademj.drawPointsBT(angle1, angle2, translacion_y);
                     break;
                 case ARISTAS:
-                    balancetrademj.drawEdgeBT();
+                    balancetrademj.drawEdgeBT(angle1, angle2, translacion_y);
                     break;
                     
                 case SOLID:
-                    balancetrademj.drawSolidBT();
+                    balancetrademj.drawSolidBT(angle1, angle2, translacion_y);
                     break;
                     
                 case CHESS:
-                    balancetrademj.drawChessBT();
+                    balancetrademj.drawChessBT(angle1, angle2, translacion_y);
                     break;
             }
             break;
@@ -679,6 +703,8 @@ int main(int argc, char **argv)
 	
 	// funcion de inicialización
 	initialize();
+    
+    glutIdleFunc(animation);
 	
 	// inicio del bucle de eventos
 	glutMainLoop();

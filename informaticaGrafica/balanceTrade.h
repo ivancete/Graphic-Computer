@@ -36,10 +36,10 @@ class BalanceTrade {
     
 public:
     BalanceTrade();
-    void drawPointsBT();
-    void drawEdgeBT();
-    void drawSolidBT();
-    void drawChessBT();
+    void drawPointsBT(float angle1, float angle2, float translation);
+    void drawEdgeBT(float angle1, float angle2, float translation);
+    void drawSolidBT(float angle1, float angle2, float translation);
+    void drawChessBT(float angle1, float angle2, float translation);
 };
 
 #endif /* balanceTrade_h */
