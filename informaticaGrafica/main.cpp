@@ -17,6 +17,13 @@
 #include "cubo.h"
 #include "piramide.h"
 #include "figura_ply.h"
+#include "baseMJ.h"
+#include "stickMJ.h"
+#include "baseStickMJ.h"
+#include "branchMJ.h"
+#include "handMJ.h"
+#include "branchHandMJ.h"
+#include "balanceTrade.h"
 
 #if defined(__APPLE__)
 #include <GLUT/glut.h>
@@ -49,6 +56,10 @@ FiguraPly vasoRevolucionI(vasoI);
 FiguraPly cilindroRevolucion(cilindro);
 FiguraPly peonzaRevolucion(peonza);
 
+BaseStickMJ bsmj = BaseStickMJ();
+BranchHandMJ branchhandmj = BranchHandMJ();
+BalanceTrade balancetrademj = BalanceTrade();
+
 // tamaño de los ejes
 const int AXIS_SIZE=5000;
 
@@ -62,6 +73,14 @@ GLfloat Window_width,Window_height,Front_plane,Back_plane;
 
 // variables que determninan la posicion y tamaño de la ventana X
 int UI_window_pos_x=50,UI_window_pos_y=50,UI_window_width=1000,UI_window_height=1000;
+
+//**************************************************************************
+//Function figure rotation and translation.
+//***************************************************************************
+
+void animation(){
+    
+}
 
 //**************************************************************************
 //
@@ -178,6 +197,63 @@ void draw_objects()
 					break;
 			}
 			break;
+            
+        case BRANCHHANDMJ:
+            switch (mode) {
+                case VERTICES:
+                    branchhandmj.drawPointsBH(0, 0);
+                    break;
+                case ARISTAS:
+                    branchhandmj.drawEdgeBH(0, 0);
+                    break;
+                    
+                case SOLID:
+                    branchhandmj.drawSolidBH(0, 0);
+                    break;
+                    
+                case CHESS:
+                    branchhandmj.drawChessBH(0, 0);
+                    break;
+            }
+            break;
+            
+        case BASESTICKMJ:
+            switch (mode) {
+                case VERTICES:
+                    bsmj.drawPointsBS();
+                    break;
+                case ARISTAS:
+                    bsmj.drawEdgeBS();
+                    break;
+                    
+                case SOLID:
+                    bsmj.drawSolidBS();
+                    break;
+                    
+                case CHESS:
+                    bsmj.drawChessBS();
+                    break;
+            }
+            break;
+            
+        case BALANCETRADE:
+            switch (mode) {
+                case VERTICES:
+                    balancetrademj.drawPointsBT();
+                    break;
+                case ARISTAS:
+                    balancetrademj.drawEdgeBT();
+                    break;
+                    
+                case SOLID:
+                    balancetrademj.drawSolidBT();
+                    break;
+                    
+                case CHESS:
+                    balancetrademj.drawChessBT();
+                    break;
+            }
+            break;
             
         case OBJECT_PLY:
             switch (mode) {
@@ -485,8 +561,16 @@ void special_keys(int Tecla1,int x,int y)
 		case GLUT_KEY_RIGHT:Observer_angle_y++;break;
 		case GLUT_KEY_UP:Observer_angle_x--;break;
 		case GLUT_KEY_DOWN:Observer_angle_x++;break;
-		case GLUT_KEY_PAGE_UP:Observer_distance*=1.2;break;
-		case GLUT_KEY_PAGE_DOWN:Observer_distance/=1.2;break;
+		//case GLUT_KEY_PAGE_UP:Observer_distance*=1.2;break;
+		//case GLUT_KEY_PAGE_DOWN:Observer_distance/=1.2;break;
+            
+        case GLUT_KEY_F10:
+            Observer_distance*=1.2;
+            break;
+            
+        case GLUT_KEY_F9:
+            Observer_distance/=1.2;
+            break;
             
         case GLUT_KEY_F1:
             obj = PYRAMID;
@@ -500,6 +584,18 @@ void special_keys(int Tecla1,int x,int y)
             
         case GLUT_KEY_F4:
             obj = OBJECT_REV;
+            break;
+            
+        case GLUT_KEY_F5:
+            obj = BASESTICKMJ;
+            break;
+            
+        case GLUT_KEY_F6:
+            obj = BRANCHHANDMJ;
+            break;
+            
+        case GLUT_KEY_F7:
+            obj = BALANCETRADE;
             break;
 	}
 	

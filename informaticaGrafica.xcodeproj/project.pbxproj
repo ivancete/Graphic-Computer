@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F411DC231FAB8239008A8945 /* stickMJ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F411DC211FAB8239008A8945 /* stickMJ.cpp */; };
+		F411DC261FAB8634008A8945 /* baseStickMJ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F411DC241FAB8634008A8945 /* baseStickMJ.cpp */; };
+		F411DC291FAB8B64008A8945 /* branchMJ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F411DC271FAB8B64008A8945 /* branchMJ.cpp */; };
+		F411DC2C1FAB91A7008A8945 /* handMJ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F411DC2A1FAB91A7008A8945 /* handMJ.cpp */; };
+		F411DC2F1FABA956008A8945 /* branchHandMJ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F411DC2D1FABA956008A8945 /* branchHandMJ.cpp */; };
+		F42CCCB71FB2444B00A424F5 /* balanceTrade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F42CCCB51FB2444B00A424F5 /* balanceTrade.cpp */; };
 		F45A188E1F894BAA00AFE784 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45A188D1F894BAA00AFE784 /* OpenGL.framework */; };
 		F45A18901F894BAF00AFE784 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45A188F1F894BAF00AFE784 /* GLUT.framework */; };
 		F45A189A1F894C0100AFE784 /* objeto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45A18921F894C0000AFE784 /* objeto.cpp */; };
@@ -15,6 +21,7 @@
 		F45A189D1F894C0100AFE784 /* piramide.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F45A18981F894C0100AFE784 /* piramide.cpp */; };
 		F493C5D91F8B8EC400BD093D /* file_ply_stl.cc in Sources */ = {isa = PBXBuildFile; fileRef = F493C5D71F8B8EC400BD093D /* file_ply_stl.cc */; };
 		F493C5DC1F8B8FBF00BD093D /* figura_ply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F493C5DA1F8B8FBF00BD093D /* figura_ply.cpp */; };
+		F497E8361FAB6DC9001C2298 /* baseMJ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F497E8341FAB6DC9001C2298 /* baseMJ.cpp */; };
 		F4A3CC021F7D27E4008FB41D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A3CC011F7D27E4008FB41D /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +38,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F411DC211FAB8239008A8945 /* stickMJ.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stickMJ.cpp; sourceTree = "<group>"; };
+		F411DC221FAB8239008A8945 /* stickMJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stickMJ.h; sourceTree = "<group>"; };
+		F411DC241FAB8634008A8945 /* baseStickMJ.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = baseStickMJ.cpp; sourceTree = "<group>"; };
+		F411DC251FAB8634008A8945 /* baseStickMJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = baseStickMJ.h; sourceTree = "<group>"; };
+		F411DC271FAB8B64008A8945 /* branchMJ.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = branchMJ.cpp; sourceTree = "<group>"; };
+		F411DC281FAB8B64008A8945 /* branchMJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = branchMJ.h; sourceTree = "<group>"; };
+		F411DC2A1FAB91A7008A8945 /* handMJ.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = handMJ.cpp; sourceTree = "<group>"; };
+		F411DC2B1FAB91A7008A8945 /* handMJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = handMJ.h; sourceTree = "<group>"; };
+		F411DC2D1FABA956008A8945 /* branchHandMJ.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = branchHandMJ.cpp; sourceTree = "<group>"; };
+		F411DC2E1FABA956008A8945 /* branchHandMJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = branchHandMJ.h; sourceTree = "<group>"; };
+		F42CCCB51FB2444B00A424F5 /* balanceTrade.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = balanceTrade.cpp; sourceTree = "<group>"; };
+		F42CCCB61FB2444B00A424F5 /* balanceTrade.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = balanceTrade.h; sourceTree = "<group>"; };
 		F45A188D1F894BAA00AFE784 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		F45A188F1F894BAF00AFE784 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		F45A18911F894C0000AFE784 /* vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vertex.h; sourceTree = "<group>"; };
@@ -47,6 +66,8 @@
 		F493C5D81F8B8EC400BD093D /* file_ply_stl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_ply_stl.h; sourceTree = "<group>"; };
 		F493C5DA1F8B8FBF00BD093D /* figura_ply.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = figura_ply.cpp; sourceTree = "<group>"; };
 		F493C5DB1F8B8FBF00BD093D /* figura_ply.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = figura_ply.h; sourceTree = "<group>"; };
+		F497E8341FAB6DC9001C2298 /* baseMJ.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = baseMJ.cpp; sourceTree = "<group>"; };
+		F497E8351FAB6DC9001C2298 /* baseMJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = baseMJ.h; sourceTree = "<group>"; };
 		F4A3CBFE1F7D27E4008FB41D /* informaticaGrafica */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = informaticaGrafica; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A3CC011F7D27E4008FB41D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +129,20 @@
 				F493C5DA1F8B8FBF00BD093D /* figura_ply.cpp */,
 				F493C5DB1F8B8FBF00BD093D /* figura_ply.h */,
 				F47E5C661F8FC2BE0014AC5F /* Documentación Algoritmo de Revolución */,
+				F497E8341FAB6DC9001C2298 /* baseMJ.cpp */,
+				F497E8351FAB6DC9001C2298 /* baseMJ.h */,
+				F411DC211FAB8239008A8945 /* stickMJ.cpp */,
+				F411DC221FAB8239008A8945 /* stickMJ.h */,
+				F411DC241FAB8634008A8945 /* baseStickMJ.cpp */,
+				F411DC251FAB8634008A8945 /* baseStickMJ.h */,
+				F411DC271FAB8B64008A8945 /* branchMJ.cpp */,
+				F411DC281FAB8B64008A8945 /* branchMJ.h */,
+				F411DC2A1FAB91A7008A8945 /* handMJ.cpp */,
+				F411DC2B1FAB91A7008A8945 /* handMJ.h */,
+				F411DC2D1FABA956008A8945 /* branchHandMJ.cpp */,
+				F411DC2E1FABA956008A8945 /* branchHandMJ.h */,
+				F42CCCB51FB2444B00A424F5 /* balanceTrade.cpp */,
+				F42CCCB61FB2444B00A424F5 /* balanceTrade.h */,
 			);
 			path = informaticaGrafica;
 			sourceTree = "<group>";
@@ -170,12 +205,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F45A189A1F894C0100AFE784 /* objeto.cpp in Sources */,
+				F411DC2F1FABA956008A8945 /* branchHandMJ.cpp in Sources */,
 				F45A189D1F894C0100AFE784 /* piramide.cpp in Sources */,
+				F497E8361FAB6DC9001C2298 /* baseMJ.cpp in Sources */,
 				F4A3CC021F7D27E4008FB41D /* main.cpp in Sources */,
+				F411DC261FAB8634008A8945 /* baseStickMJ.cpp in Sources */,
+				F411DC2C1FAB91A7008A8945 /* handMJ.cpp in Sources */,
 				F493C5D91F8B8EC400BD093D /* file_ply_stl.cc in Sources */,
 				F45A189B1F894C0100AFE784 /* cubo.cpp in Sources */,
+				F411DC231FAB8239008A8945 /* stickMJ.cpp in Sources */,
+				F411DC291FAB8B64008A8945 /* branchMJ.cpp in Sources */,
 				F493C5DC1F8B8FBF00BD093D /* figura_ply.cpp in Sources */,
 				F45A189C1F894C0100AFE784 /* triangulos.cpp in Sources */,
+				F42CCCB71FB2444B00A424F5 /* balanceTrade.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
