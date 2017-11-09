@@ -85,23 +85,15 @@ int UI_window_pos_x=50,UI_window_pos_y=50,UI_window_width=1000,UI_window_height=
 
 void animation(){
     
-    if (bajar) {
-        angle1 += 1;
-        angle2 += 1;
-        translacion_y-=0.01;
-    }
-    else if(!bajar){
-        angle1 += 1;
-        angle2 += 1;
-        translacion_y+=0.01;
-    }
-    
     if (translacion_y >= 20.8) {
         bajar = true;
     }
     
     if (translacion_y <= 14.8)
         bajar = false;
+    
+    angle1 += 1;
+    angle2 += 1;
     
     glutPostRedisplay();
 }
@@ -561,6 +553,18 @@ void normal_keys(unsigned char Tecla1,int x,int y)
             
         case '6':
             obj_ply = PEONZA;
+            break;
+            
+        case 'D':
+            if (bajar) {
+                translacion_y -= 0.1;
+            }
+            break;
+            
+        case 'L':
+            if (!bajar) {
+                translacion_y += 0.1;
+            }
             break;
 	}
 	
