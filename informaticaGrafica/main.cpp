@@ -24,6 +24,8 @@
 #include "handMJ.h"
 #include "branchHandMJ.h"
 #include "balanceTrade.h"
+#include "luz.h"
+#include "material.h"
 
 #if defined(__APPLE__)
 #include <GLUT/glut.h>
@@ -50,6 +52,13 @@ float angle1 = 0;
 float angle2 = 0;
 bool bajar = true;
 
+GLfloat alfa = 0;
+GLfloat beta = 0;
+
+//Luz luz0;
+Luz luz1;
+Material material;
+
 Cubo cubo(4);
 Piramide piramide(10, 10);
 FiguraPly objeto_ply ("/Users/Ivanovic/Documents/Graphic-Computer/informaticaGrafica/beethoven.ply");
@@ -61,9 +70,9 @@ FiguraPly vasoRevolucionI(vasoI);
 FiguraPly cilindroRevolucion(cilindro);
 FiguraPly peonzaRevolucion(peonza);
 
-BaseStickMJ bsmj = BaseStickMJ();
+/*BaseStickMJ bsmj = BaseStickMJ();
 BranchHandMJ branchhandmj = BranchHandMJ();
-BalanceTrade balancetrademj = BalanceTrade();
+BalanceTrade balancetrademj = BalanceTrade();*/
 
 // tamaño de los ejes
 const int AXIS_SIZE=5000;
@@ -189,6 +198,23 @@ void draw_objects()
 				case P_A:
 					cubo.draw_circulos(0.5, 50, GL_FILL);
 					break;
+                    
+                case NORMALFACES:
+                    cubo.draw_normal_faces();
+                    break;
+                    
+                case NORMALVERTEX:
+                    cubo.draw_normal_vertex();
+                    break;
+                    
+                case FLAT:
+                    cubo.dibujar_suavizado_plano();
+                    break;
+                    
+                case SMOOTH:
+                    cubo.dibujar_suavizado_gouraud();
+                    break;
+
 			}
 		break;
 		case PYRAMID:
@@ -214,7 +240,7 @@ void draw_objects()
 			}
 			break;
             
-        case BRANCHHANDMJ:
+        /*case BRANCHHANDMJ:
             switch (mode) {
                 case VERTICES:
                     branchhandmj.drawPointsBH(0, 0);
@@ -269,7 +295,7 @@ void draw_objects()
                     balancetrademj.drawChessBT(angle1, angle2, translacion_y);
                     break;
             }
-            break;
+            break;*/
             
         case OBJECT_PLY:
             switch (mode) {
@@ -286,6 +312,22 @@ void draw_objects()
                     
                 case CHESS:
                     objeto_ply.draw_chess();
+                    break;
+                    
+                case NORMALFACES:
+                    objeto_ply.draw_normal_faces();
+                    break;
+                    
+                case NORMALVERTEX:
+                    objeto_ply.draw_normal_vertex();
+                    break;
+                    
+                case FLAT:
+                    objeto_ply.dibujar_suavizado_plano();
+                    break;
+                    
+                case SMOOTH:
+                    objeto_ply.dibujar_suavizado_gouraud();
                     break;
             }
             break;
@@ -316,6 +358,24 @@ void draw_objects()
                         case REVOLUTION:
                             cilindroRevolucion.revolution(20);
                             break;
+                            
+                        case NORMALFACES:
+                            cilindroRevolucion.draw_normal_faces();
+                            break;
+                            
+                        case NORMALVERTEX:
+                            cilindroRevolucion.draw_normal_vertex();
+                            break;
+                            
+                        case FLAT:
+                            material.activar();
+                            cilindroRevolucion.dibujar_suavizado_plano();
+                            break;
+                            
+                        case SMOOTH:
+                            material.activar();
+                            cilindroRevolucion.dibujar_suavizado_gouraud();
+                            break;
                     }
                     break;
                     
@@ -340,6 +400,14 @@ void draw_objects()
                             
                         case REVOLUTION:
                             tuboRevolucion.revolution(20);
+                            break;
+                            
+                        case NORMALFACES:
+                            tuboRevolucion.draw_normal_faces();
+                            break;
+                            
+                        case NORMALVERTEX:
+                            tuboRevolucion.draw_normal_vertex();
                             break;
                     }
                     break;
@@ -366,6 +434,15 @@ void draw_objects()
                         case REVOLUTION:
                             coneRevolucion.revolution(20);
                             break;
+                            
+                        case NORMALFACES:
+                            coneRevolucion.draw_normal_faces();
+                            break;
+                            
+                        case NORMALVERTEX:
+                            coneRevolucion.draw_normal_vertex();
+                            break;
+                            
                     }
                     break;
                     
@@ -392,6 +469,14 @@ void draw_objects()
                         case REVOLUTION:
                             vasoRevolucion.revolution(70);
                             break;
+                            
+                        case NORMALFACES:
+                            vasoRevolucion.draw_normal_faces();
+                            break;
+                            
+                        case NORMALVERTEX:
+                            vasoRevolucion.draw_normal_vertex();
+                            break;
                     }
                     break;
                     
@@ -416,6 +501,14 @@ void draw_objects()
                             
                         case REVOLUTION:
                             vasoRevolucionI.revolution(20);
+                            break;
+                            
+                        case NORMALFACES:
+                            vasoRevolucionI.draw_normal_faces();
+                            break;
+                            
+                        case NORMALVERTEX:
+                            vasoRevolucionI.draw_normal_vertex();
                             break;
                     }
                     break;
@@ -456,16 +549,27 @@ void draw_objects()
 
 
 //**************************************************************************
+// Luces
+//**************************************************************************
+
+void draw_lights(void)
+{
+    //luz0.activar();
+    luz1.activar();
+}
+
+
+//**************************************************************************
 //
 //***************************************************************************
 
 void draw_scene(void)
 {
-	
 	clear_window();
 	change_observer();
 	draw_axis();
 	draw_objects();
+    //draw_lights();
 	glutSwapBuffers();
 }
 
@@ -506,10 +610,26 @@ void normal_keys(unsigned char Tecla1,int x,int y)
 		case 'P':
 			mode = VERTICES;
 			break;
+            
+        case 'H':
+            mode = NORMALFACES;
+            break;
+            
+        case 'J':
+            mode = NORMALVERTEX;
+            break;
 			
 		case 'S':
 			mode = SOLID;
 			break;
+            
+        case 'X':
+            mode = FLAT;
+            break;
+            
+        case 'V':
+            mode = SMOOTH;
+            break;
 			
 		case 'A':
 			mode = ARISTAS;
@@ -555,6 +675,35 @@ void normal_keys(unsigned char Tecla1,int x,int y)
             obj_ply = PEONZA;
             break;
             
+        case 'E':
+            //luz0.activar();
+            luz1.activar();
+            break;
+            
+        case 'D':
+            //luz0.desactivar();
+            luz1.desactivar();
+            break;
+            
+            // Cambiar angulos luz direccional, alfa es girar(rotar sobre eje y) y beta es subir/bajar (rotar sobre eje x).
+        case 'U':
+            beta += 20;
+            
+            break;
+            
+        case 'I':
+            beta -= 20;
+            
+            break;
+        case 'K':
+            alfa += 20;
+            
+            break;
+        case 'L':
+            alfa -= 20;
+            
+            break;
+         /*
         case 'D':
             if (bajar) {
                 translacion_y -= 0.1;
@@ -565,7 +714,7 @@ void normal_keys(unsigned char Tecla1,int x,int y)
             if (!bajar) {
                 translacion_y += 0.1;
             }
-            break;
+            break;*/
 	}
 	
 	glutPostRedisplay();
@@ -659,6 +808,21 @@ void initialize(void)
 	change_projection();
 	//
 	glViewport(0,0,UI_window_width,UI_window_height);
+    
+    /*luz0.setID(GL_LIGHT0);
+    luz0.setDireccional(false);
+    luz0.setPosicion(_vertex3f(10,-10,-5));
+    luz0.setAmbiental(_vertex4f(0.5,0.5,0.5,1));
+    luz0.setDifusa(_vertex4f(0.8,0.8,0.8,1));
+    luz0.setEspecular(_vertex4f(0.9,0.9,0.9,1));*/
+    
+    luz1.setID(GL_LIGHT1);
+    luz1.setDireccional(true);
+    luz1.setPosicion(_vertex3f(-1,1,0));
+    luz1.setDireccion(alfa,beta);
+    luz1.setAmbiental(_vertex4f(0.3,0.3,0.3,1));
+    luz1.setDifusa(_vertex4f(1,1,1,1));
+    luz1.setEspecular(_vertex4f(1,0.2,0.2,1));
 }
 
 
@@ -708,7 +872,7 @@ int main(int argc, char **argv)
 	// funcion de inicialización
 	initialize();
     
-    glutIdleFunc(animation);
+    //glutIdleFunc(animation);
 	
 	// inicio del bucle de eventos
 	glutMainLoop();

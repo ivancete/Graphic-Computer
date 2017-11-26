@@ -15,6 +15,7 @@
 #include <iostream>
 #include <cmath>
 #include "triangulos.h"
+#include "material.h"
 
 #include <GLUT/glut.h>
 #ifdef __APPLE__

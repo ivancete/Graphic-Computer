@@ -23,6 +23,8 @@
 		F493C5DC1F8B8FBF00BD093D /* figura_ply.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F493C5DA1F8B8FBF00BD093D /* figura_ply.cpp */; };
 		F497E8361FAB6DC9001C2298 /* baseMJ.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F497E8341FAB6DC9001C2298 /* baseMJ.cpp */; };
 		F4A3CC021F7D27E4008FB41D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4A3CC011F7D27E4008FB41D /* main.cpp */; };
+		F4EF791B1FC973F000170933 /* luz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4EF79191FC973F000170933 /* luz.cpp */; };
+		F4EF791E1FC976D000170933 /* material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4EF791C1FC976D000170933 /* material.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +72,10 @@
 		F497E8351FAB6DC9001C2298 /* baseMJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = baseMJ.h; sourceTree = "<group>"; };
 		F4A3CBFE1F7D27E4008FB41D /* informaticaGrafica */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = informaticaGrafica; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4A3CC011F7D27E4008FB41D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F4EF79191FC973F000170933 /* luz.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = luz.cpp; sourceTree = "<group>"; };
+		F4EF791A1FC973F000170933 /* luz.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = luz.h; sourceTree = "<group>"; };
+		F4EF791C1FC976D000170933 /* material.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = material.cpp; sourceTree = "<group>"; };
+		F4EF791D1FC976D000170933 /* material.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = material.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +149,10 @@
 				F411DC2E1FABA956008A8945 /* branchHandMJ.h */,
 				F42CCCB51FB2444B00A424F5 /* balanceTrade.cpp */,
 				F42CCCB61FB2444B00A424F5 /* balanceTrade.h */,
+				F4EF79191FC973F000170933 /* luz.cpp */,
+				F4EF791A1FC973F000170933 /* luz.h */,
+				F4EF791C1FC976D000170933 /* material.cpp */,
+				F4EF791D1FC976D000170933 /* material.h */,
 			);
 			path = informaticaGrafica;
 			sourceTree = "<group>";
@@ -216,6 +226,8 @@
 				F411DC231FAB8239008A8945 /* stickMJ.cpp in Sources */,
 				F411DC291FAB8B64008A8945 /* branchMJ.cpp in Sources */,
 				F493C5DC1F8B8FBF00BD093D /* figura_ply.cpp in Sources */,
+				F4EF791E1FC976D000170933 /* material.cpp in Sources */,
+				F4EF791B1FC973F000170933 /* luz.cpp in Sources */,
 				F45A189C1F894C0100AFE784 /* triangulos.cpp in Sources */,
 				F42CCCB71FB2444B00A424F5 /* balanceTrade.cpp in Sources */,
 			);
