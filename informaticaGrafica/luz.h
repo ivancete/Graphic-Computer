@@ -25,19 +25,19 @@
 
 class Luz {
     
-    GLenum id;
+    GLenum numeroLuz;
     bool direccional;
     _vertex4f posicion;
     GLfloat alfa;
     GLfloat beta;
     _vertex4f ambiental;
-    _vertex4f difuso;
+    _vertex4f difusa;
     _vertex4f especular;
     
 public:
     Luz();
-    void activar();
-    void desactivar();
+    void encenderLuz();
+    void apagarLuz();
     void setID(const GLenum &i);
     void luces();
     void setDireccional(const bool &d);

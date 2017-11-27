@@ -51,6 +51,7 @@ public:
     void draw_solid_light();
     void dibujar_suavizado_plano();
     void dibujar_suavizado_gouraud();
+    void cambiarMaterial(_vertex4f ambiental, _vertex4f difusa, _vertex4f especular, GLfloat brillo);
 };
 
 #endif /* triangulos_hpp */

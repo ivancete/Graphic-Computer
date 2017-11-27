@@ -1,11 +1,3 @@
-//
-//  triangulos.cpp
-//  informaticaGrafica
-//
-//  Created by Iván Rodríguez Millán on 28/9/17.
-//  Copyright © 2017 Iván Rodríguez Millán. All rights reserved.
-//
-
 #include "triangulos.h"
 
 Triangulos::Triangulos()
@@ -138,7 +130,7 @@ void Triangulos::normal_faces()
         normalFaces[i].y = A.z * B.x - A.x * B.z;
         normalFaces[i].z = A.x * B.y - A.y * B.x;
         
-        if (normalFaces[i].x < 0) {
+        /*if (normalFaces[i].x < 0) {
             normalFaces[i].x *= (-1);
         }
         else if(normalFaces[i].y < 0){
@@ -146,7 +138,7 @@ void Triangulos::normal_faces()
         }
         else if(normalFaces[i].z < 0){
             normalFaces[i].z *= (-1);
-        }
+        }*/
         
         normalFaces[i].normalize();
         
@@ -167,30 +159,32 @@ void Triangulos::normal_vertex()
     
     _vertex3f B, A;
     int contador;
-    _vertex3f sumatoriaNormales = {0,0,0};
+    float x = 0, y = 0, z = 0;
     
     for (int i = 0; i < vertices.size(); i++) {
         
         contador = 0;
-
+        x = 0;
+        y = 0;
+        z = 0;
         for (int j = 0; j < triangulos.size(); j++) {
             
             if (triangulos[j]._0 == i || triangulos[j]._1 == i || triangulos[j]._2 == i) {
-                sumatoriaNormales.x += normalFaces[j].x;
-                sumatoriaNormales.y += normalFaces[j].y;
-                sumatoriaNormales.z += normalFaces[j].z;
+                x += normalFaces[j].x;
+                y += normalFaces[j].y;
+                z += normalFaces[j].z;
                 contador++;
             }
         }
         
         //Almacenamos el vector normal del vertice j-esimo.
-        normalVertex[i].x = sumatoriaNormales.x / contador;
+        normalVertex[i].x = x / contador;
         
-        normalVertex[i].y = sumatoriaNormales.y / contador;
+        normalVertex[i].y = y / contador;
         
-        normalVertex[i].z = sumatoriaNormales.z / contador;
+        normalVertex[i].z = z / contador;
         
-        if (normalVertex[i].x < 0) {
+        /*if (normalVertex[i].x < 0) {
             normalVertex[i].x *= (-1);
         }
         else if(normalVertex[i].y < 0){
@@ -198,7 +192,7 @@ void Triangulos::normal_vertex()
         }
         else if(normalVertex[i].z < 0){
             normalVertex[i].z *= (-1);
-        }
+        }*/
         
         //Normalizamos el vector normal de los vertices.
         normalVertex[i].normalize();
@@ -283,7 +277,7 @@ void Triangulos::draw_normal_vertex()
 
 void Triangulos::dibujar_suavizado_plano() {
     material.activar();
-    glColor3f(0.5, 0.7, 0.3);
+    //glColor3f(0.5, 0.7, 0.3);
     glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
     glShadeModel(GL_FLAT);
     
@@ -303,7 +297,7 @@ void Triangulos::dibujar_suavizado_plano() {
 
 void Triangulos::dibujar_suavizado_gouraud() {
     material.activar();
-    glColor3f(0.5, 0.7, 0.3);
+    //glColor3f(0.5, 0.7, 0.3);
     glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
     glShadeModel(GL_SMOOTH);
     
@@ -320,4 +314,13 @@ void Triangulos::dibujar_suavizado_gouraud() {
         glVertex3f(vertices[triangulos[i]._2].x, vertices[triangulos[i]._2].y, vertices[triangulos[i]._2].z);
     }
     glEnd();
+}
+
+void Triangulos::cambiarMaterial(_vertex4f ambiental, _vertex4f difusa, _vertex4f especular, GLfloat brillo)
+{
+    material.setAmbiental(ambiental);
+    material.setDifusa(difusa);
+    material.setEspecular(especular);
+    material.setBrillo(brillo);
+    material.activar();
 }

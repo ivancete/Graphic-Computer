@@ -1,11 +1,3 @@
-//
-//  main.cpp
-//  informaticaGrafica
-//
-//  Created by Iván Rodríguez Millán on 28/9/17.
-//  Copyright © 2017 Iván Rodríguez Millán. All rights reserved.
-//
-
 #include <vector>
 #include "stdio.h"
 #include <ctype.h>
@@ -55,13 +47,13 @@ bool bajar = true;
 GLfloat alfa = 0;
 GLfloat beta = 0;
 
-//Luz luz0;
+Luz luz0;
 Luz luz1;
 Material material;
 
 Cubo cubo(4);
 Piramide piramide(10, 10);
-FiguraPly objeto_ply ("/Users/Ivanovic/Documents/Graphic-Computer/informaticaGrafica/beethoven.ply");
+FiguraPly objeto_ply ("/Users/Ivanovic/Documents/Graphic-Computer/informaticaGrafica/lata-pcue.ply");
 
 FiguraPly tuboRevolucion(tubo);
 FiguraPly coneRevolucion(cono);
@@ -118,7 +110,7 @@ void clear_window()
 }
 
 
-//**************************************************************************
+//***************************************************************************
 // Funcion para definir la transformación de proyeccion
 //***************************************************************************
 
@@ -312,6 +304,10 @@ void draw_objects()
                     
                 case CHESS:
                     objeto_ply.draw_chess();
+                    break;
+                    
+                case REVOLUTION:
+                    objeto_ply.revolution(20);
                     break;
                     
                 case NORMALFACES:
@@ -554,8 +550,9 @@ void draw_objects()
 
 void draw_lights(void)
 {
-    //luz0.activar();
-    luz1.activar();
+    glDisable(GL_LIGHT0);
+    luz0.encenderLuz();
+    luz1.encenderLuz();
 }
 
 
@@ -567,9 +564,9 @@ void draw_scene(void)
 {
 	clear_window();
 	change_observer();
+    draw_lights();
 	draw_axis();
 	draw_objects();
-    //draw_lights();
 	glutSwapBuffers();
 }
 
@@ -675,33 +672,45 @@ void normal_keys(unsigned char Tecla1,int x,int y)
             obj_ply = PEONZA;
             break;
             
-        case 'E':
-            //luz0.activar();
+        /*case 'E':
+            luz0.activar();
             luz1.activar();
             break;
             
         case 'D':
-            //luz0.desactivar();
+            luz0.desactivar();
             luz1.desactivar();
-            break;
+            break;*/
             
             // Cambiar angulos luz direccional, alfa es girar(rotar sobre eje y) y beta es subir/bajar (rotar sobre eje x).
         case 'U':
             beta += 20;
-            
+            luz1.setDireccion(alfa, beta);
             break;
             
         case 'I':
             beta -= 20;
-            
+            luz1.setDireccion(alfa, beta);
             break;
+            
         case 'K':
             alfa += 20;
-            
+            luz1.setDireccion(alfa, beta);
             break;
+            
         case 'L':
             alfa -= 20;
+            luz1.setDireccion(alfa, beta);
+            break;
             
+        case 'W':
+            objeto_ply.cambiarMaterial(_vertex4f(0.24725, 0.1995, 0.0745, 1.0), _vertex4f(0.75164, 0.60648, 0.22648,1.0)
+                                       , _vertex4f(0.628281, 0.555802, 0.366065,1.0), 51.2);
+            break;
+            
+        case 'D':
+            objeto_ply.cambiarMaterial(_vertex4f(0.0215, 0.1745, 0.0215, 0.55), _vertex4f(0.07568, 0.61424, 0.07568,0.55)
+                                       , _vertex4f(0.633, 0.727811, 0.633,0.55), 76.8);
             break;
          /*
         case 'D':
@@ -742,11 +751,11 @@ void special_keys(int Tecla1,int x,int y)
 		//case GLUT_KEY_PAGE_DOWN:Observer_distance/=1.2;break;
             
         case GLUT_KEY_F10:
-            Observer_distance*=1.2;
+            Observer_distance*=1.02;
             break;
             
         case GLUT_KEY_F9:
-            Observer_distance/=1.2;
+            Observer_distance/=1.02;
             break;
             
         case GLUT_KEY_F1:
@@ -809,20 +818,23 @@ void initialize(void)
 	//
 	glViewport(0,0,UI_window_width,UI_window_height);
     
-    /*luz0.setID(GL_LIGHT0);
+    luz0.setID(GL_LIGHT1);
     luz0.setDireccional(false);
-    luz0.setPosicion(_vertex3f(10,-10,-5));
-    luz0.setAmbiental(_vertex4f(0.5,0.5,0.5,1));
+    luz0.setPosicion(_vertex3f(15,-10,7));
+    luz0.setAmbiental(_vertex4f(0.1,0.1,0.1,1));
     luz0.setDifusa(_vertex4f(0.8,0.8,0.8,1));
-    luz0.setEspecular(_vertex4f(0.9,0.9,0.9,1));*/
+    luz0.setEspecular(_vertex4f(0.8,0.8,0.8,1));
     
-    luz1.setID(GL_LIGHT1);
+    luz1.setID(GL_LIGHT2);
     luz1.setDireccional(true);
-    luz1.setPosicion(_vertex3f(-1,1,0));
+    luz1.setPosicion(_vertex3f(0,1,1));
     luz1.setDireccion(alfa,beta);
-    luz1.setAmbiental(_vertex4f(0.3,0.3,0.3,1));
-    luz1.setDifusa(_vertex4f(1,1,1,1));
-    luz1.setEspecular(_vertex4f(1,0.2,0.2,1));
+    luz1.setAmbiental(_vertex4f(0.1,0.1,0.1,1.0));
+    luz1.setDifusa(_vertex4f(1.0,1.0,1.0,1.0));
+    luz1.setEspecular(_vertex4f(1.0,1.0,1.0,1.0));
+    
+    
+    objeto_ply.cambiarMaterial(_vertex4f(0.2,0.4,0.1,1.0), _vertex4f(0.1,0.7,1.0,1.0), _vertex4f(0.2,0.7,0.3,1.0), 5);
 }
 
 

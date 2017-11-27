@@ -21,11 +21,6 @@ FiguraPly::FiguraPly(string ubicacion)
         this->normal_faces();
         this->normal_vertex();
         
-        material.setAmbiental(_vertex4f(0.2,0.4,0.1,1.0));
-        material.setDifusa(_vertex4f(0.1,0.7,1.0,1.0));
-        material.setEspecular(_vertex4f(0.2,0.7,0.3,1.0));
-        material.setBrillo(5);
-        
         std::cout << "File read correctly" << std::endl;
     }
     
